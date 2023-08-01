@@ -1,0 +1,141 @@
+{
+    "wlr/workspaces": {
+        "all-outputs": false,
+        "sort-by-number": true,
+        "on-click": "activate",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "format": "{icon}",
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": ""
+        },
+        "persistent_workspaces": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": ""
+        }
+    },
+
+    "custom/launcher":{
+        "format": "",
+        "on-click": "$HOME/.config/waybar/scripts/menu",
+        "on-click-right": "killall wofi"
+    },
+
+    "hyprland/window": {
+        "format": "➡ {} | ",
+        "separate-outputs": true
+    },
+
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+
+    "custom/cava-internal": {
+        "exec": "sh ~/.config/waybar/scripts/cava.sh",
+        "format": "{}",
+        "tooltip": false,
+        "layer": "below",
+        "output": "all"
+    }, 
+
+    "tray": {
+        "icon-size": 15,
+        "spacing": 8
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "{:  %a %d %b | %I:%M %p}",
+        "tooltip": true,
+        "tooltip-format": "<big>{:%B %Y \t}</big>\n<tt>{calendar}</tt>"
+    },
+
+    "cpu": {
+	"interval": 15,
+        "format": " {usage}%",
+        "tooltip": false
+    },
+
+    "memory": {
+	"interval": 30,
+        "format": " {}%",
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi": "{signalStrength}%  ",
+        "format-ethernet": " {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} on {essid} via {gwaddr} 󰈀",
+        "format-linked": "No IP  󰈀",
+        "format-disconnected": "Disconnected  ⚠",
+        "format-alt": " {bandwidthUpBits} |  {bandwidthDownBits}"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5, 
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
+        "format-bluetooth-muted": "  {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "custom/power":{
+        "format":"⏻ ",
+        "on-click": "~/.local/bin/powermenu"
+
+    },
+    "custom/updates":{
+        "format": "{} Update(s)",
+        "exec": "checkupdates | wc -l",
+        "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+        "interval": 15,
+        "on-click": "footclient -e paru -Syu && notify-send 'The system has been updated' "
+    },
+    "custom/wallpaper":{
+        "format":" ",
+        "on-click": "bash $HOME/.config/hypr/scripts/wallpaper.sh 2> /dev/null"
+    },
+    "custom/spotify": {
+        "format": "<span size='large' rise='-1pt'></span>  <span color='#f5e0dc'>{}</span>",
+        "max-length": 60,
+        "interval": 1,
+        "return-type": "json",
+        "exec": "$HOME/.config/waybar/scripts/spotify-metadata.sh",
+        "on-click": "playerctl -p spotify play-pause",
+        "on-click-right": "killall spotify",
+        "on-scroll-up": "playerctl -p spotify next",
+        "on-scroll-down": "playerctl -p spotify previous"
+    },
+    "custom/weather": {
+        "format": "{}",
+        "format-alt": "{alt}: {}",
+        "format-alt-click": "click-right",
+        "interval": 1800,
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/weather-get.sh",
+        "exec-if": "ping wttr.in -c1"
+    }
+}

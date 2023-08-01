@@ -1,0 +1,37 @@
+
+{
+    "include": "~/.config/waybar/modules",
+    "layer": "top",
+    "position": "top", 
+    "height": 32, 
+    "spacing": 0, 
+    "width": 3430,
+    "margin-top": -5,
+    "margin-bottom": -12,
+
+    "modules-left": [
+        "custom/leftside",
+        "custom/launcher",
+        "wlr/workspaces",
+        "cpu", 
+        "memory", 
+        "custom/rightside"
+        ],
+    "modules-center": [
+        "custom/leftside",
+        "hyprland/window",
+        "custom/spotify",
+        "custom/cava-internal",
+        "custom/rightside"
+        ],
+    "modules-right": [
+        "custom/leftside",
+        "custom/wallpaper",
+        "custom/updates",
+        "pulseaudio",
+        "custom/weather",
+        "clock",
+        "custom/power",
+        "custom/rightside"
+	]
+}
