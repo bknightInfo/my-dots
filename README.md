@@ -1,2 +1,2 @@
 # my-dots
-my hyprland dots
+my wayland dots
