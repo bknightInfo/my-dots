@@ -1,8 +1,35 @@
 #!/bin/sh
-# HISTFILE="$XDG_DATA_HOME"/zsh/history
+
+# xdg directories
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+
+# ZSH history
+HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
 HISTSIZE=1000000
 SAVEHIST=1000000
-export PATH="$HOME/.local/bin":$PATH
+
+# ssh-add
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+# less
+export LESSHISTFILE="${XDG_CONFIG_HOME}/less/history"
+export LESSKEY="${XDG_CONFIG_HOME}/less/keys"
+
+# wget
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+
+# libdvdcss
+export DVDCSS_CACHE="${XDG_DATA_HOME}/dvdcss"
+
+# qt5
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+export PATH="$HOME/.local/share/bin":$PATH
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 export PATH=$HOME/.cargo/bin:$PATH
@@ -11,21 +38,8 @@ export GOPATH=$HOME/.local/share/go
 export PATH=$HOME/.fnm:$PATH
 export PATH="$PATH:./node_modules/.bin"
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+
 eval "$(fnm env)"
 
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$("$HOME/.miniconda/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "$HOME/.miniconda/etc/profile.d/conda.sh" ]; then
-        . "$HOME/.miniconda/etc/profile.d/conda.sh"
-    else
-        export PATH="$HOME/.miniconda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
