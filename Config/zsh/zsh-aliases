@@ -110,7 +110,10 @@ alias v="nvim"
 alias vim="nvim"
 
 #development aliases
-alias phpd='cd ~/Documents/Development'
+alias dev='cd ~/Documents/Development'
+alias code='vscodium'
+alias cat='bat'
+
 
 #laravel alias
 alias pa='php artisan'
