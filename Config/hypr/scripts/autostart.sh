@@ -7,7 +7,7 @@ if [[ ! `pidof swww` ]]; then
         sleep 1
 fi
 
-swww img $HOME/.config/hypr/wallpapers/32170418410_215c9c22dd_o.jpg &
+swww img $HOME/.config/hypr/wallpapers/bluewallpaper.png &
 
 # Etc
 sleep 1

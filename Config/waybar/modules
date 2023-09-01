@@ -111,8 +111,9 @@
         "format": "{} Update(s)",
         "exec": "checkupdates | wc -l",
         "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
-        "interval": 15,
-        "on-click": "kitty -e paru -Syu && notify-send 'The system has been updated' "
+        "interval": 150,
+        "on-click": "kitty -e paru -Syu && flatpak update && notify-send 'The system has been updated' ",
+        "tooltip": true
     },
     "custom/wallpaper":{
         "format":" ",
