@@ -1,12 +1,6 @@
 #!/bin/sh
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 
-# get fastest mirrors
-alias mirror="sudo reflector -c Australia -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-alias mirrord="sudo reflector -c Australia --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-alias mirrors="sudo reflector -c Australia --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-alias mirrora="sudo reflector -c Australia --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
-
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
@@ -22,22 +16,16 @@ alias psmem='ps auxf | sort -nr -k 4 | head -5'
 # get top process eating cpu ##
 alias pscpu='ps auxf | sort -nr -k 3 | head -5'
 
-# gpg encryption
-# verify signature for isos
-alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
-# receive the key of a developer
-alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
-
 # For when keys break
 alias archlinx-fix-keys="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys"
 
 alias m="git checkout master"
 alias s="git checkout stable"
-alias gc='git clone '
+alias gc="git clone"
 
 # Package Info
-alias info="sudo pacman -Si "
-alias infox="sudo pacman -Sii "
+alias info="sudo pacman -Si"
+alias infox="sudo pacman -Sii"
 
 #pacman unlock
 alias unlock="sudo rm /var/lib/pacman/db.lck"
@@ -46,7 +34,7 @@ alias unlock="sudo rm /var/lib/pacman/db.lck"
 alias free="free -mt"
 
 #replace cat with bat
-alias cat="bat"
+alias cat="bat --paging=never"
 
 #Pacman for software managment
 alias search='sudo pacman -Qs'
@@ -57,7 +45,6 @@ alias update='sudo pacman -Syyu'
 alias clrcache='sudo pacman -Scc'
 alias updb='paru && sudo pacman -Sy'
 alias orphans='sudo pacman -Rns $(pacman -Qtdq)'
-alias forphans='flatpak uninstall --unused && flatpak repair'
 
 #Yay skipping keys check (use at own risk)
 alias yayskip="yay -S --mflags --skipinteg " 
@@ -78,12 +65,12 @@ alias lapps='cd ~/.local/share/applications'
 #Refresh Keys
 alias rkeys='sudo pacman-key --refresh-keys'
 
-# Replace ls with exa
-alias ls='exa -al --color=auto --group-directories-first --icons' # preferred listing
-alias la='exa -a --color=auto --group-directories-first --icons'  # all files and dirs
-alias ll='exa -l --color=auto --group-directories-first --icons'  # long format
-alias lt='exa -aT --color=auto --group-directories-first --icons' # tree listing
-alias l='exa -lah --color=auto --group-directories-first --icons' # tree listing
+# Replace ls with eza
+alias ls='eza -al --color=auto --group-directories-first --icons' # preferred listing
+alias la='eza -a --color=auto --group-directories-first --icons'  # all files and dirs
+alias ll='eza -l --color=auto --group-directories-first --icons'  # long format
+alias lt='eza -aT --color=auto --group-directories-first --icons' # tree listing
+alias l='eza -lah --color=auto --group-directories-first --icons' # tree listing
 
 #grub update
 alias grubupdate='sudo grub-mkconfig -o /boot/grub/grub.cfg'
@@ -113,28 +100,3 @@ alias lapps='cd ~/.local/share/applications'
 alias v="nvim"
 alias vim="nvim"
 
-#development aliases
-alias dev='cd ~/Documents/Development'
-alias code='vscodium'
-alias cat='bat'
-
-
-#laravel alias
-alias pa='php artisan'
-alias serve='php artisan serve'
-alias migrate='php artisan migrate'
-alias migratef='php artisan migrate:fresh'
-alias pamm='php artisan make:migration'
-alias model='php artisan make:model'
-alias cntrl='php artisan make:controller'
-alias policy='php artisan make:policy'
-alias middleware='php artisan make:middleware'
-alias routes='php artisan route:list'
-alias wip='git add . && git commit -m "wip" && git push'
-alias gst='git status'
-alias ni='npm install'
-alias watch='npm run watch'
-alias dev='npm run dev'
-alias cr='composer require'
-
-alias matrix='unimatrix'

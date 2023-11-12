@@ -1,5 +1,5 @@
 {
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "all-outputs": false,
         "sort-by-number": true,
         "on-click": "activate",
@@ -22,7 +22,7 @@
 
     "custom/launcher":{
         "format": "",
-        "on-click": "$HOME/.config/waybar/scripts/menu",
+        "on-click": "$HOME/.config/hypr/scripts/launcher",
         "on-click-right": "killall wofi"
     },
 
